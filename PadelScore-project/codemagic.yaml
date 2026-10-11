@@ -1,0 +1,16 @@
+workflows:
+  padelscore-android:
+    name: PadelScore Android + Wear OS
+
+    environment:
+      java: 17
+
+    scripts:
+      - name: Build Android APK
+        script: |
+          chmod +x ./gradlew
+          ./gradlew :app:assembleDebug :wear:assembleDebug
+
+    artifacts:
+      - app/build/outputs/apk/debug/app-debug.apk
+      - wear/build/outputs/apk/debug/wear-debug.apk
